@@ -17,7 +17,7 @@ const HomeCycling = ()=>{
 const mainBg = StyleSheet.create({
   bg: {
     backgroundColor: '#eeeeee',
-    padding: '1rem',
+    padding: 16,
     height: '100%'
   }
 })
@@ -30,7 +30,7 @@ const estilosHeader = StyleSheet.create({
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: '1rem'
+    marginTop: 16
   },
 });
 

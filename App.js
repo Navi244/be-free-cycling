@@ -1,20 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import HomeCycling from './pages/HomeCycling';
+import Routes from './pages/Routes';
+import MainHeader from './components/MainHeader';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeCycling} options={{
+            headerTitle:()=> <MainHeader title="Inicio" />,
+            headerStyle: {backgroundColor: '#f4511e'},
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+            }
+          }}/>
+        <Stack.Screen name="Routes" component={Routes} options={{
+          headerTitle:()=> <MainHeader title="Enrutamiento" />,
+          headerStyle: {backgroundColor: '#f4511e'},
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold'
+          }
+        }}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
