@@ -1,17 +1,15 @@
 import React from "react";
 import { Text, StyleSheet, SafeAreaView, TextInput, Button } from "react-native";
-//import { config } from "../config/config";
-//const axios = require('axios').default;
+import { config } from "../config/config";
+const axios = require('axios').default;
 
 
 const makeRequest = ()=>{
-    console.log('Hola');
-//   axios.get(config.host + '/json').then((response)=>{
-//     console.log(response);
-//   })
-//   .catch((error)=>{
-//     console.log(error)
-//   })
+  axios.get(config.host + '/json').then((response)=>{
+    console.log(response);
+  })
+  .catch((error)=>{
+  })
 }
 
 
