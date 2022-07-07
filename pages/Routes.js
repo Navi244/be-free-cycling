@@ -36,15 +36,14 @@ const Routes = ()=>{
 
   const permissionsState = getStatusPermissions({});
   permissionsState.then((status)=>{
-    let text = 'Waiting..';
     if (status === 'granted') {
     const location = getCurrentPosition()
     .then(coord => {
       console.log(coord)
       return coord
-     });
-     console.log(location);
-      setStateSpinner(false)
+    });
+    console.log(location)
+    setStateSpinner(false)
     } else if(status === 'denied') {
       console.log('Denegado');
     }

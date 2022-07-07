@@ -85,6 +85,18 @@ const MainButtons = () => {
             title="Entrenamiento"
             onPress={()=> navigation.navigate('Training')}></Button>
         </View>
+        <View style={homeButtons.button}>
+          <Button
+            color="#841584"
+            titleStyle={{ color: 'black' }}
+            buttonStyle={{ borderRadius: 10, backgroundColor: '#FFFFFF' }}
+            containerStyle={{shadowOffset:{  width: 4,  height: 4,  },
+              shadowColor: 'black',
+              shadowOpacity: 0.2,
+              borderRadius: 10}}
+            title="Música"
+            onPress={()=> navigation.navigate('Music')}></Button>
+        </View>
       </View>
     </View>
   )

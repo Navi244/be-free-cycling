@@ -10,6 +10,7 @@ import BeginnerTraining from './pages/TrainingBeginner';
 import IntermediateTraining from './pages/TrainingIntermediate';
 import AdvancedTraining from './pages/TrainingAdvanced';
 import MainHeader from './components/MainHeader';
+import Music from './pages/Music';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
@@ -68,29 +69,36 @@ export default function App() {
           headerTitleStyle: {
             fontWeight: 'bold'}
         }}/>
-         <Stack.Screen name="Training" component={Training} options={{
+        <Stack.Screen name="Training" component={Training} options={{
           headerTitle:()=> <MainHeader title="Entrenamiento" />,
           headerStyle: {backgroundColor: '#f4511e'},
           headerTintColor: '#fff',
           headerTitleStyle: {
             fontWeight: 'bold'}
         }}/>
-         <Stack.Screen name="BeginnerTraining" component={BeginnerTraining} options={{
+        <Stack.Screen name="BeginnerTraining" component={BeginnerTraining} options={{
           headerTitle:()=> <MainHeader title="Entrenamiento nivel principiantes" />,
           headerStyle: {backgroundColor: '#f4511e'},
           headerTintColor: '#fff',
           headerTitleStyle: {
             fontWeight: 'bold'}
         }}/>
-         <Stack.Screen name="IntermediateTraining" component={IntermediateTraining} options={{
+        <Stack.Screen name="IntermediateTraining" component={IntermediateTraining} options={{
           headerTitle:()=> <MainHeader title="Entrenamiento nivel intermedio" />,
           headerStyle: {backgroundColor: '#f4511e'},
           headerTintColor: '#fff',
           headerTitleStyle: {
             fontWeight: 'bold'}
         }}/>
-         <Stack.Screen name="AdvancedTraining" component={AdvancedTraining} options={{
+        <Stack.Screen name="AdvancedTraining" component={AdvancedTraining} options={{
           headerTitle:()=> <MainHeader title="Entrenamiento nivel avanzado" />,
+          headerStyle: {backgroundColor: '#f4511e'},
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold'}
+        }}/>
+        <Stack.Screen name="Music" component={Music} options={{
+          headerTitle:()=> <MainHeader title="Música" />,
           headerStyle: {backgroundColor: '#f4511e'},
           headerTintColor: '#fff',
           headerTitleStyle: {
