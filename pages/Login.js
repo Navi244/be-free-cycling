@@ -59,7 +59,8 @@ const Login = ( )=>{
         color="#bebebe"
         onPress={
           ()=>requestLogin(user, password).then(data=>{
-            (data.length > 0) ? navigation.navigate('Home') : setModalVisible(true);
+            navigation.navigate('Home')
+            //(data.length > 0) ? navigation.navigate('Home') : setModalVisible(true);
           })
         }
         title="Entrar">
