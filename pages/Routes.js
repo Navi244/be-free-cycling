@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Text, StyleSheet, SafeAreaView, TextInput, Button, ActivityIndicator, Dimensions } from "react-native";
 import MapView , { Marker} from 'react-native-maps';
 import { config } from "../config/config";
-import * as Location from 'expo-location';
+import {useLocation} from "../hooks/useLocation"
 //import { check, PERMISSIONS } from "react-native-permissions";
 const axios = require('axios').default;
 
@@ -16,42 +16,19 @@ const makeRequest = ()=>{
   })
 }
 
-async function getStatusPermissions (){
-  let {status} = await Location.requestForegroundPermissionsAsync();
-  return status;
+const getInitialPosition = ()=> {
+  const position = useLocation().then((response)=>{
+    return response
+  });
+  console.log(position);
 }
 
-
- async function getCurrentPosition() {
-  let {coords} = await Location.getCurrentPositionAsync()
-    .then(coord => {
-      return coord
-    })
-
-  return coords;
-}
-
-const Routes = ()=>{
+const Routes = async()=>{
   const [useStateSpinner, setStateSpinner] = useState(true);
-  const [usePosition, setStatePosition] = useState('');
-
-  useEffect(()=>{{
-    const permissionsState = getStatusPermissions({});
-    permissionsState.then((status)=>{
-    
-      if (status === 'granted') {
-      getCurrentPosition()
-      .then(coord => {
-        setStatePosition(coord)
-      });
-      setStateSpinner(false)
-      } else if(status === 'denied') {
-        console.log('Denegado');
-      }
+  const [initalPosition, setInitalPosition] = useState({});
+    // const position = getInitialPosition().then((response)=>{
       
-    });
-  } },[])
-    console.log(usePosition)
+    // })
   return(
     <SafeAreaView>
       <ActivityIndicator size="large" color="#00ff00" animating={useStateSpinner}/>
@@ -63,23 +40,23 @@ const Routes = ()=>{
         style={inpunt.input}
         placeholder='Ingresa a donde vas'/>
       <Text>Mapa de ubicación</Text>
-      {/* <MapView
+      <MapView
         style={mapsStyles.map}
         initialRegion={{
-          latitude: 19.4413145,
-          longitude: -99.1838134,
+          latitude: usePosition.latitude,
+          longitude: usePosition.longitude,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}>
-          <Marker
+          {/* <Marker
             coordinate={{
-              latitude: 19.4413145,
+              latitude: usePosition.latitude,
               longitude: -99.1838134
             }}
             title= 'Primer marcador'
             description="Este es el marcador"
-            ></Marker>
-        </MapView> */}
+            ></Marker> */}
+        </MapView>
       <Button
         onPress={()=>makeRequest()}
         color="#841584"
